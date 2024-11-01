@@ -30,11 +30,17 @@ Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL, et que vous en avez accepté les
 termes.
 */
-
+#include "Type.h"
 #ifndef INTERFACESUDOKU_H
 #define INTERFACESUDOKU_H
 class InterfaceSudoku {
     public:
+        virtual _taille_ NombreCase()=0;
+        virtual _nombre_ getCase(_numero_ numeroCase)=0;
+        virtual _nombre_ MaxNombre()=0;
+
+
+
         
 
 };

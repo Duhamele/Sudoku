@@ -3,7 +3,6 @@ Copyright ou © ou Copr. Elie Duhamel , (31/10/24)
 
 elie.duhamel@grenoble-inp.org
 
-
 Ce logiciel est régi par la licence CeCILL soumise au droit français et
 respectant les principes de diffusion des logiciels libres. Vous pouvez
 utiliser, modifier et/ou redistribuer ce programme sous les conditions
@@ -35,7 +34,9 @@ termes.
 #ifndef  __TYPE_H__
 #define __TYPE_H__
 
-typedef int taille;
+typedef int _taille_;
+typedef int _nombre_;
+typedef int _numero_;
 
 
 
