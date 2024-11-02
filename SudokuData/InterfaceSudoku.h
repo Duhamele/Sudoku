@@ -31,6 +31,8 @@ pris connaissance de la licence CeCILL, et que vous en avez accepté les
 termes.
 */
 #pragma once
+#include <vector>
+
 #include "Type.h"
 
 class InterfaceSudoku {
@@ -41,6 +43,9 @@ class InterfaceSudoku {
         virtual _nombre_ MaxNombre()=0;
         virtual bool IsPossible(_numero_ numeroCase,_nombre_ nombre)=0;
         virtual bool IsWin()=0;
+        virtual std::vector<_numero_> getLigneCase(_numero_ numeroCase)=0;
+        virtual std::vector<_numero_> getColonneCase(_numero_ numeroCase)=0;
+        virtual std::vector<_numero_> getBoxCase(_numero_ numeroCase)=0;
 
 
 

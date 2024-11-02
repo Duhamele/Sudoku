@@ -23,8 +23,15 @@ class Sudoku9x9:public InterfaceSudoku{
 
         bool IsPossible(_numero_ numeroCase, _nombre_ nombre) override;
 
+        std::vector<_numero_> getLigneCase(_numero_ numeroCase) override;
+
+        std::vector<_numero_> getColonneCase(_numero_ numeroCase) override;
+
+        std::vector<_numero_> getBoxCase(_numero_ numeroCase) override;
+
         bool IsWin() override;
         static void GetColonneLigne(_nombre_ numeroCase,int* colonne,int* ligne);
+        static int GetBoxCase(_numero_ numeroCase);
 };
 
 
