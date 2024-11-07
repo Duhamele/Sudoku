@@ -1,5 +1,5 @@
 /*
-Copyright ou © ou Copr. Elie Duhamel , (31/10/24)
+Copyright ou © ou Copr. Elie Duhamel , (07/11/24)
 
 elie.duhamel@grenoble-inp.org
 
@@ -30,28 +30,32 @@ Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL, et que vous en avez accepté les
 termes.
 */
-#pragma once
-#include <vector>
-
-#include "Type.h"
-
-class InterfaceSudoku {
-    public:
-        virtual ~InterfaceSudoku() = 0;
-        virtual _taille_ NombreCase()=0;
-        virtual _nombre_ getCase(_numero_ numeroCase)=0;
-        virtual void setCase(_numero_ numeroCase,_nombre_ nombre)=0;
-        virtual _nombre_ MaxNombre()=0;
-        virtual bool IsPossible(_numero_ numeroCase,_nombre_ nombre)=0;
-        virtual bool IsWin()=0;
-        virtual std::vector<_numero_> getLigneCase(_numero_ numeroCase)=0;
-        virtual std::vector<_numero_> getColonneCase(_numero_ numeroCase)=0;
-        virtual std::vector<_numero_> getBoxCase(_numero_ numeroCase)=0;
+#include "SudokuResolution.h"
+Sudoku9x9 SudokuResolution(Sudoku9x9 sudoku) {
 
 
-
-
-        
-
-};
-
+}
+void SudokuResolutionCase(Sudoku9x9 *sudoku, _numero_ numero) {
+        if(sudoku->getCase(numero)==0) {
+                bool findAnswer = true;
+                _nombre_ answer=0;
+                for(_nombre_ nombre=1;nombre <=sudoku->MaxNombre();nombre++ ) {
+                        if(sudoku->IsPossible(numero,nombre)) {
+                                if(answer==0) {
+                                        answer=nombre;
+                                }else {
+                                        findAnswer = false;
+                                        break;
+                                }
+                        }
+                }
+                if(findAnswer==true&&answer!=0) {
+                        sudoku->setCase(numero,answer);
+                }
+        }
+}
+void SudokuResolutionByCase(Sudoku9x9* sudoku) {
+        for(_numero_ i=0;i<sudoku->NombreCase();i++) {
+                SudokuResolutionCase(sudoku,i);
+        }
+}

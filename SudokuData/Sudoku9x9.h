@@ -61,6 +61,7 @@ class Sudoku9x9:public InterfaceSudoku{
         bool IsWin() override;
         static void GetColonneLigne(_nombre_ numeroCase,int* colonne,int* ligne);
         int GetBoxCase(_numero_ numeroCase);
+        void setCase(_numero_ numeroCase, _nombre_ nombre) override;
 };
 
 

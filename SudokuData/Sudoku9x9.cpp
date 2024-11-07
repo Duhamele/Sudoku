@@ -46,6 +46,25 @@ _nombre_ Sudoku9x9::getCase(_numero_ numeroCase) {
 }
 
 bool Sudoku9x9::IsPossible(_numero_ numeroCase, _nombre_ nombre) {
+        if(this->sudoku[numeroCase] != 0) {
+                return false;
+        }
+        for(_numero_ n:this->getBoxCase(numeroCase)) {
+                if(this->sudoku[n] == nombre) {
+                        return false;
+                }
+        }
+        for(_numero_ n:this->getLigneCase(numeroCase)) {
+                if(this->sudoku[n] == nombre) {
+                        return false;
+                }
+        }
+        for(_numero_ n:this->getColonneCase(numeroCase)) {
+                if(this->sudoku[n] == nombre) {
+                        return false;
+                }
+        }
+        return true;
 
 }
 
@@ -87,6 +106,28 @@ std::vector<_numero_> Sudoku9x9::getBoxCase(_numero_ numeroCase) {
 }
 
 bool Sudoku9x9::IsWin() {
+        for (int i = 0; i < 81; i++) {
+                if(sudoku[i] == 0) {
+                        return false;
+                }
+                for(_numero_ n:this->getBoxCase(i)) {
+                        if(this->sudoku[n] == this->sudoku[i]&&i!=n) {
+                                return false;
+                        }
+                }
+                for(_numero_ n:this->getLigneCase(i)) {
+                        if(this->sudoku[n] == this->sudoku[i]&&i!=n) {
+                                return false;
+                        }
+                }
+                for(_numero_ n:this->getColonneCase(i)) {
+                        if(this->sudoku[n] == this->sudoku[i]&&i!=n) {
+                                return false;
+                        }
+                }
+
+        }
+        return true;
 }
 
 void Sudoku9x9::GetColonneLigne(_nombre_ numeroCase, int *colonne, int *ligne) {
@@ -114,6 +155,14 @@ int Sudoku9x9::GetBoxCase(_numero_ numeroCase) {
         colonne/=3;
         ligne/=3;
         return ligne+colonne*3;
+}
+
+void Sudoku9x9::setCase(_numero_ numeroCase, _nombre_ nombre) {
+        if(sudoku[numeroCase]==0) {
+                if(this->IsPossible(numeroCase,nombre)) {
+                        sudoku[numeroCase]=nombre;
+                }
+        }
 }
 
 
