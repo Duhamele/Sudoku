@@ -32,6 +32,7 @@ termes.
 */
 #pragma once
 #include <vector>
+#include <string>
 
 #include "Type.h"
 
@@ -40,6 +41,7 @@ class InterfaceSudoku {
         virtual ~InterfaceSudoku() = 0;
         virtual _taille_ NombreCase()=0;
         virtual _nombre_ getCase(_numero_ numeroCase)=0;
+        virtual _nombre_ getCase(_nombre_ colonne,_nombre_ ligne)=0;
         virtual void setCase(_numero_ numeroCase,_nombre_ nombre)=0;
         virtual _nombre_ MaxNombre()=0;
         virtual bool IsPossible(_numero_ numeroCase,_nombre_ nombre)=0;
@@ -47,6 +49,7 @@ class InterfaceSudoku {
         virtual std::vector<_numero_> getLigneCase(_numero_ numeroCase)=0;
         virtual std::vector<_numero_> getColonneCase(_numero_ numeroCase)=0;
         virtual std::vector<_numero_> getBoxCase(_numero_ numeroCase)=0;
+        virtual std::string toString()=0;
 
 
 

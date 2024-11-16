@@ -45,6 +45,10 @@ _nombre_ Sudoku9x9::getCase(_numero_ numeroCase) {
 
 }
 
+_nombre_ Sudoku9x9::getCase(_nombre_ colonne, _nombre_ ligne) {
+        return sudoku[(ligne-1)+(colonne-1)*9];
+}
+
 bool Sudoku9x9::IsPossible(_numero_ numeroCase, _nombre_ nombre) {
         if(this->sudoku[numeroCase] != 0) {
                 return false;
@@ -163,6 +167,25 @@ void Sudoku9x9::setCase(_numero_ numeroCase, _nombre_ nombre) {
                         sudoku[numeroCase]=nombre;
                 }
         }
+}
+std::string Sudoku9x9::toString() {
+        std::string chaineDeCaractere;
+        for (int ligne=0; ligne<9; ligne++) {
+                for(int colonne=0;colonne<9;colonne++) {
+                        _nombre_ symbole=this->getCase(colonne,ligne);
+                        char caractere=symbole!=0?symbole+'0':' ';
+                        chaineDeCaractere.push_back(caractere);
+                        chaineDeCaractere.push_back(' ');
+                        if(colonne==2||colonne==5) {
+                                chaineDeCaractere.push_back('|');
+                        }
+                }
+                chaineDeCaractere.push_back('\n');
+                if(ligne==2||ligne==5) {
+                        chaineDeCaractere+="_____________________________________\n";
+                }
+        }
+        return chaineDeCaractere;
 }
 
 

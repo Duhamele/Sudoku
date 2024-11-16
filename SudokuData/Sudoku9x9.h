@@ -47,6 +47,7 @@ class Sudoku9x9:public InterfaceSudoku{
         _taille_ NombreCase() override;
 
         _nombre_ getCase(_numero_ numeroCase) override;
+        _nombre_ getCase(_nombre_ colonne, _nombre_ ligne) override;
 
         _nombre_ MaxNombre() override;
 
@@ -60,8 +61,9 @@ class Sudoku9x9:public InterfaceSudoku{
 
         bool IsWin() override;
         static void GetColonneLigne(_nombre_ numeroCase,int* colonne,int* ligne);
-        int GetBoxCase(_numero_ numeroCase);
+        static int GetBoxCase(_numero_ numeroCase);
         void setCase(_numero_ numeroCase, _nombre_ nombre) override;
+        std::string toString() override;
 };
 
 
